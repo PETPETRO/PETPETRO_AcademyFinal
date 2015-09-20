@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Registration</title>
+</h:head>
+<h:body>
+
+
+
+	<h:form>
+		<h:panelGrid columns="3">
+			Login Name:
+			<h:inputText id="login" value="#{user.login}">
+				<f:validateRegex pattern="[a-z]{4,10}"></f:validateRegex>
+			</h:inputText>
+			<h:message for="login" errorClass="invalid" />
+		
+			Name:
+			<h:inputText id="name" value="#{user.name}">
+				<f:validateRegex pattern="[A-Z]{1}.*">
+				</f:validateRegex>
+			</h:inputText>
+			<h:message for="name" errorClass="invalid" />
+		
+		
+		Surname:
+			<h:inputText id="surname" value="#{user.surname}">
+				<f:validateRegex pattern="[A-Z]{1}.*"></f:validateRegex>
+			</h:inputText>
+			<h:message for="surname" errorClass="invalid" />
+		
+			
+			Mail:
+			<h:inputText id="mail" value="#{user.mail}">
+				<f:validateRegex pattern=".+\@.+\..+" />
+			</h:inputText>
+			<h:message for="mail" errorClass="invalid" />
+			
+			Manager ID:
+			<h:inputText id="man_id" value="#{user.man_id}">
+				<f:validateLength minimum="0"></f:validateLength>
+			</h:inputText>
+			<h:message for="man_id" errorClass="invalid">
+			zle man _id
+			</h:message>
+			
+			
+			Password:
+			<h:inputSecret id="passwd" value="#{user.password}">
+				<f:validateRegex
+					pattern="((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,})" />
+			</h:inputSecret>
+			<h:message for="passwd" errorClass="invalid" />
+			
+			Repeat Password:
+			<h:inputSecret id="reppasswd">
+
+			</h:inputSecret>
+			<h:message for="reppasswd" errorClass="invalid" />
+
+			<h:commandButton action="#{user.saveUser}" value="Register" />
+
+		</h:panelGrid>
+	</h:form>
+
+
+
+
+</h:body>
+
+</html>
